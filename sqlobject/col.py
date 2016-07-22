@@ -50,6 +50,13 @@ except ImportError:
 else:
     mxdatetime_available = True
 
+try:
+    from ciso8601 import parse_datetime as cparse_datetime
+except ImportError:
+    ciso8601_available = False
+else:
+    ciso8601_available = True
+
 DATETIME_IMPLEMENTATION = "datetime"
 MXDATETIME_IMPLEMENTATION = "mxDateTime"
 
@@ -63,7 +70,7 @@ if mxdatetime_available:
 
 default_datetime_implementation = DATETIME_IMPLEMENTATION
 
-__all__ = ["datetime_available", "mxdatetime_available",
+__all__ = ["ciso8601_available", "datetime_available", "mxdatetime_available",
         "default_datetime_implementation", "DATETIME_IMPLEMENTATION"]
 
 if mxdatetime_available:
@@ -1094,6 +1101,11 @@ class DateTimeValidator(validators.DateValidator):
                 else:
                     return datetime.time(value.hour, value.minute, int(value.second))
         try:
+            if ciso8601_available:
+                try:
+                    return cparse_datetime(value)
+                except:
+                    pass
             stime = time.strptime(value, self.format)
         except:
             raise validators.Invalid("expected a date/time string of the '%s' format in the DateTimeCol '%s', got %s %r instead" % \
