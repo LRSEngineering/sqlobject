@@ -1029,11 +1029,42 @@ connectionForURI = TheURIOpener.connectionForURI
 dbConnectionForScheme = TheURIOpener.dbConnectionForScheme
 
 # Register DB URI schemas
-import firebird
-import maxdb
-import mssql
-import mysql
-import postgres
-import rdbhost
-import sqlite
-import sybase
+try:
+    import firebird
+except ImportError:
+    pass
+
+try:
+    import maxdb
+except ImportError:
+    pass
+
+try:
+    import mssql
+except ImportError:
+    pass
+
+try:
+    import mysql
+except ImportError:
+    pass
+
+try:
+    import postgres
+except ImportError:
+    pass
+
+try:
+    import rdbhost
+except ImportError:
+    pass
+
+try:
+    import sqlite
+except ImportError:
+    pass
+
+try:
+    import sybase
+except ImportError:
+    pass
