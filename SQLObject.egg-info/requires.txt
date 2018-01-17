@@ -1,22 +1,22 @@
 FormEncode>=1.1.1
 
-[sqlite]
-pysqlite
-
-[sapdb]
-sapdb
-
-[postgresql]
-psycopg
-
 [firebird]
 kinterbasdb
 
-[sybase]
-Sybase
+[mssql]
+adodbapi
 
 [mysql]
 MySQLdb
 
-[mssql]
-adodbapi
+[postgresql]
+psycopg
+
+[sapdb]
+sapdb
+
+[sqlite]
+pysqlite
+
+[sybase]
+Sybase

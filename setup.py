@@ -9,7 +9,7 @@ try:
     from setuptools import setup
     is_setuptools = True
 except ImportError:
-    from distutils.core import setup
+    from setuptools import setup
     is_setuptools = False
 
 versionpath = join(abspath(dirname(__file__)), "sqlobject", "__version__.py")
